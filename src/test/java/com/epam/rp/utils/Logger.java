@@ -1,4 +1,4 @@
-package com.epam.rp;
+package com.epam.rp.utils;
 
 import org.apache.logging.log4j.LogManager;
 
