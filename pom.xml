@@ -9,8 +9,8 @@
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source> <!-- This seems incorrect. Typical values are 1.8, 11, 15, etc. -->
-        <maven.compiler.target>21</maven.compiler.target> <!-- This seems incorrect. Typical values are 1.8, 11, 15, etc. -->
+        <maven.compiler.source>11</maven.compiler.source> <!-- This seems incorrect. Typical values are 1.8, 11, 15, etc. -->
+        <maven.compiler.target>11</maven.compiler.target> <!-- This seems incorrect. Typical values are 1.8, 11, 15, etc. -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <allure.directory>target/allure-results</allure.directory>
     </properties>
@@ -45,6 +45,13 @@
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>3.141.59</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>5.5.3</version>
         </dependency>
 
     </dependencies>
