@@ -2,6 +2,7 @@ package com.epam.rp.ui.tests;
 
 import com.epam.rp.ui.pages.LoginPage;
 import com.epam.rp.utils.ConfigReader;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import io.qameta.allure.Feature;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -27,7 +28,7 @@ public class LoginTest {
 
     @BeforeEach
     public void setUp() {
-        System.setProperty("webdriver.chrome.driver", "C:\\Users\\Denis_Peganov\\drivers\\chromedriver-118.exe");
+        WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();
 
