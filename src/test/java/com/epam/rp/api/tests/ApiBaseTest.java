@@ -9,12 +9,10 @@ public class ApiBaseTest extends BaseTest {
     @BeforeSuite
     public void setUpSuite() {
         commonSetUp();
-        // Additional setup for API tests
     }
 
     @AfterSuite
     public void tearDownSuite() {
-        // Additional teardown for API tests
         commonTearDown();
     }
 }
