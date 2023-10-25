@@ -2,24 +2,26 @@ package com.epam.rp.ui.tests;
 
 import com.epam.rp.ui.pages.LoginPage;
 import com.epam.rp.utils.ConfigReader;
-import io.qameta.allure.Feature;
-import io.qameta.allure.testng.AllureTestNg;
+import io.qameta.allure.Allure;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.io.ByteArrayInputStream;
 import java.util.Properties;
 
 import static org.testng.Assert.assertEquals;
 
-@Feature("Login")
 public class LoginTest extends UiBaseTest {
 
     private String defaultUserName;
     private String defaultUserPassword;
     private String baseUrl;
+    private LoginPage loginPage;
+    private WebDriverWait wait;
 
     @BeforeMethod
     public void setUpTest() {
@@ -29,16 +31,17 @@ public class LoginTest extends UiBaseTest {
         defaultUserPassword = props.getProperty("defaultUserPassword");
     }
 
-    @Test
+    @Test(description = "UI: Default user login")
     public void testLogin() {
-        LoginPage loginPage = new LoginPage(driver);
-        WebDriverWait wait = new WebDriverWait(driver, 5);
-
+        loginPage = new LoginPage(driver);
+        wait = new WebDriverWait(driver, 5);
         driver.get(baseUrl);
-        loginPage.login(defaultUserName, defaultUserPassword);
 
+        loginPage.login(defaultUserName, defaultUserPassword);
         String dashboardPage = String.format("%s/ui/#default_personal/dashboard", baseUrl);
         wait.until(ExpectedConditions.urlToBe(dashboardPage));
         assertEquals(dashboardPage, driver.getCurrentUrl());
+
+        Allure.addAttachment("Login screenshot", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }
 }
