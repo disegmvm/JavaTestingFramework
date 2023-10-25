@@ -1,34 +1,28 @@
 package com.epam.rp.api.tests;
 
-import com.epam.rp.utils.ConfigReader;
 import com.epam.rp.utils.Logger;
 import io.qameta.allure.Feature;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.testng.annotations.BeforeTest;
+import org.testng.annotations.Test;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Properties;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.testng.Assert.assertNotNull;
 
-@Feature("API Tests")
-public class ApiSampleTest {
-
+@Feature("Get user API test")
+public class GetUserTest extends ApiBaseTest {
     private String accessToken;
-    private Properties props;
 
-    @BeforeEach
+    @BeforeTest
     public void setUp() {
-        props = ConfigReader.readProperties();
         String baseUrl = props.getProperty("baseUrl");
         String adminUserName = props.getProperty("adminUserName");
         String adminUserPassword = props.getProperty("adminUserPassword");
 
-        // Get access token
         Map<String, String> formParams = new HashMap<>();
         formParams.put("grant_type", "password");
         formParams.put("username", adminUserName);
@@ -47,7 +41,6 @@ public class ApiSampleTest {
     public void testGetUserDetails() {
         String baseUrl = props.getProperty("baseUrl");
 
-        // Use the access token to make an authenticated request
         Response response = RestAssured.given()
                 .header("Authorization", "Bearer " + accessToken)
                 .contentType(ContentType.JSON)
