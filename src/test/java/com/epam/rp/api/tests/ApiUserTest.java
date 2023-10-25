@@ -4,6 +4,7 @@ import com.epam.rp.utils.Logger;
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
+import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
@@ -12,9 +13,10 @@ import java.util.Map;
 
 import static org.testng.Assert.assertNotNull;
 
-public class GetUserTest extends ApiBaseTest {
+public class ApiUserTest extends ApiBaseTest {
     private String accessToken;
 
+    @BeforeEach
     @BeforeTest
     public void setUp() {
         String baseUrl = props.getProperty("baseUrl");
@@ -35,8 +37,8 @@ public class GetUserTest extends ApiBaseTest {
         assertNotNull(accessToken, "Access token should not be null");
     }
 
-
     @Test(description = "API: Get default user details")
+    @org.junit.jupiter.api.Test
     public void testGetUserDetails() {
         String baseUrl = props.getProperty("baseUrl");
 

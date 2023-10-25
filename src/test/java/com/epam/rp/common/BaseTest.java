@@ -13,6 +13,5 @@ public class BaseTest {
 
     // Common teardown for both API and UI tests
     public void commonTearDown() {
-        // Any common teardown logic
     }
 }

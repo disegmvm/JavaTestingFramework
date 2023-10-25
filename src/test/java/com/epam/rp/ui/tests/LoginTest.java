@@ -3,6 +3,7 @@ package com.epam.rp.ui.tests;
 import com.epam.rp.ui.pages.LoginPage;
 import com.epam.rp.utils.ConfigReader;
 import io.qameta.allure.Allure;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.testng.annotations.BeforeMethod;
@@ -24,6 +25,7 @@ public class LoginTest extends UiBaseTest {
     private WebDriverWait wait;
 
     @BeforeMethod
+    @BeforeEach
     public void setUpTest() {
         Properties props = ConfigReader.readProperties();
         baseUrl = props.getProperty("baseUrl");
@@ -32,6 +34,7 @@ public class LoginTest extends UiBaseTest {
     }
 
     @Test(description = "UI: Default user login")
+    @org.junit.jupiter.api.Test
     public void testLogin() {
         loginPage = new LoginPage(driver);
         wait = new WebDriverWait(driver, 5);

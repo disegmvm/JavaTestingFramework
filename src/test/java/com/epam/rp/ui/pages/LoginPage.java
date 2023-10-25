@@ -15,6 +15,9 @@ public class LoginPage {
     private By loginButton = By.xpath("//div[@class='loginForm__login-button-container--1mHGW']//button[@type='submit']");
 
     public LoginPage(WebDriver driver) {
+        if(driver == null) {
+            throw new RuntimeException("Driver passed to LoginPage is null!");
+        }
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 5);
     }
