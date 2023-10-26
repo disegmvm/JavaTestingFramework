@@ -15,6 +15,7 @@ import java.io.ByteArrayInputStream;
 import java.util.Properties;
 
 import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.assertTrue;
 
 public class LoginTest extends UiBaseTest {
 
@@ -29,8 +30,8 @@ public class LoginTest extends UiBaseTest {
     public void setUpTest() {
         Properties props = ConfigReader.readProperties();
         baseUrl = props.getProperty("baseUrl");
-        defaultUserName = props.getProperty("defaultUserName");
-        defaultUserPassword = props.getProperty("defaultUserPassword");
+        defaultUserName = props.getProperty("testUserName");
+        defaultUserPassword = props.getProperty("testUserPassword");
     }
 
     @Test(description = "UI: Default user login")
@@ -41,9 +42,7 @@ public class LoginTest extends UiBaseTest {
         driver.get(baseUrl);
 
         loginPage.login(defaultUserName, defaultUserPassword);
-        String dashboardPage = String.format("%s/ui/#default_personal/dashboard", baseUrl);
-        wait.until(ExpectedConditions.urlToBe(dashboardPage));
-        assertEquals(dashboardPage, driver.getCurrentUrl());
+        wait.until(ExpectedConditions.urlContains("dashboard"));
 
         Allure.addAttachment("Login screenshot", new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES)));
     }

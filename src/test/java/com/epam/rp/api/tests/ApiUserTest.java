@@ -14,36 +14,21 @@ import java.util.Map;
 import static org.testng.Assert.assertNotNull;
 
 public class ApiUserTest extends ApiBaseTest {
-    private String accessToken;
+    private String apiToken;
+    private String baseUrl;
 
     @BeforeEach
     @BeforeTest
     public void setUp() {
-        String baseUrl = props.getProperty("baseUrl");
-        String adminUserName = props.getProperty("adminUserName");
-        String adminUserPassword = props.getProperty("adminUserPassword");
-
-        Map<String, String> formParams = new HashMap<>();
-        formParams.put("grant_type", "password");
-        formParams.put("username", adminUserName);
-        formParams.put("password", adminUserPassword);
-
-        Response response = RestAssured.given()
-                .auth().preemptive().basic("ui", "uiman")
-                .formParams(formParams)
-                .post(baseUrl + "/uat/sso/oauth/token");
-
-        accessToken = response.jsonPath().getString("access_token");
-        assertNotNull(accessToken, "Access token should not be null");
+        baseUrl = props.getProperty("baseUrl");
+        apiToken = props.getProperty("apiToken");
     }
 
     @Test(description = "API: Get default user details")
     @org.junit.jupiter.api.Test
     public void testGetUserDetails() {
-        String baseUrl = props.getProperty("baseUrl");
-
         Response response = RestAssured.given()
-                .header("Authorization", "Bearer " + accessToken)
+                .header("Authorization", "Bearer " + apiToken)
                 .contentType(ContentType.JSON)
                 .get(baseUrl + "/api/v1/user");
 
