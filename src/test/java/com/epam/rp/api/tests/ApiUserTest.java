@@ -8,20 +8,15 @@ import org.junit.jupiter.api.BeforeEach;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import static org.testng.Assert.assertNotNull;
 
 public class ApiUserTest extends ApiBaseTest {
-    private String apiToken;
-    private String baseUrl;
+//    protected static String apiToken;
+//    protected static String baseUrl;
 
     @BeforeEach
     @BeforeTest
     public void setUp() {
-        baseUrl = props.getProperty("baseUrl");
-        apiToken = props.getProperty("apiToken");
     }
 
     @Test(description = "API: Get default user details")

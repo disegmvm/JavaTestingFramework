@@ -15,6 +15,7 @@ public class UiBaseTest extends BaseTest {
     @BeforeMethod
     @BeforeEach
     public void setup() {
+        commonSetUp();
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
         driver.manage().window().maximize();

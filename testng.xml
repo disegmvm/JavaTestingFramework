@@ -7,7 +7,7 @@
     </test>
     <test name="UI Tests">
         <classes>
-            <class name="com.epam.rp.ui.tests.LoginTest"/>
+            <class name="com.epam.rp.ui.tests.UiLoginTest"/>
         </classes>
     </test>
 </suite>

@@ -8,10 +8,13 @@ import org.testng.annotations.AfterSuite;
 
 public class ApiBaseTest extends BaseTest {
 
+    protected static String apiToken;
+
     @BeforeSuite
     @BeforeEach
     public void setUpSuite() {
         commonSetUp();
+        apiToken = props.getProperty("apiToken");
     }
 
     @AfterSuite
