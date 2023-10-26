@@ -1,13 +1,9 @@
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="RP Test Suite">
-    <test name="API Tests">
+<suite name="RP Test Suite" parallel="classes" thread-count="2">
+    <test name="All Tests">
         <classes>
-            <class name="com.epam.rp.api.tests.ApiUserTest"/>
-        </classes>
-    </test>
-    <test name="UI Tests">
-        <classes>
-            <class name="com.epam.rp.ui.tests.UiLoginTest"/>
+            <class name="com.epam.rp.api.tests.ApiDashboardTest"/>
+            <class name="com.epam.rp.ui.tests.UiDashboardTest"/>
         </classes>
     </test>
 </suite>
