@@ -18,6 +18,7 @@ public class DashboardPage {
 
     By updateButton = By.xpath("//button[text()='Update']");
     public By editDashboardNameField = By.xpath("//input[@placeholder='Enter dashboard name']");
+    public By editDashboardDescField = By.xpath("//textarea[@class='inputTextArea__input-text-area--N0goa']");
 
     public DashboardPage(WebDriver driver) {
         if (driver == null) {
@@ -48,13 +49,25 @@ public class DashboardPage {
         driver.findElement(firstDashboard).click();
     }
 
-    public void updateDashboardName(String newDashboardName) {
-        //wait.until(ExpectedConditions.visibilityOfElementLocated(editButton));
+    public void clickEditDashboardBtn(){
         wait.until(ExpectedConditions.elementToBeClickable(driver.findElement(editButton))).click();
+    }
+
+    public void updateDashboardName(String newDashboardName){
         WebElement editDashboardNameFieldWebElement = driver.findElement(editDashboardNameField);
         wait.until(ExpectedConditions.elementToBeClickable(editDashboardNameFieldWebElement)).click();
         editDashboardNameFieldWebElement.clear();
         editDashboardNameFieldWebElement.sendKeys(newDashboardName);
+    }
+
+    public void updateDashboardDesc(String newDashboardName){
+        WebElement editDashboardDescFieldWebElement = driver.findElement(editDashboardDescField);
+        wait.until(ExpectedConditions.elementToBeClickable(editDashboardDescFieldWebElement)).click();
+        editDashboardDescFieldWebElement.clear();
+        editDashboardDescFieldWebElement.sendKeys(newDashboardName);
+    }
+
+    public void clickUpdateDashboardBtn(){
         driver.findElement(updateButton).click();
     }
 }

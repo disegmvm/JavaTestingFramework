@@ -1,4 +1,5 @@
 Meta:
+@API
 
 Narrative:
 As a RP user

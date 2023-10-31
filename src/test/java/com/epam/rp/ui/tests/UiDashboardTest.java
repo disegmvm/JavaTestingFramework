@@ -47,17 +47,17 @@ public class UiDashboardTest extends UiBaseTest {
     @DataProvider(name = "dashboardNames")
     public Object[][] provideData() {
         return new Object[][]{
-                {"New Dashboard name 1"},
+                {"New Dashboard name 1000"},
                 {"Another Dashboard new name"},
                 {"Brand New Dashboard name"},
-                {"Kind of new Dashboard name"},
-                {"New Test Dashboard name"}
+                {"Kind of new Dashboard name v2.0.1.3"},
+                {"New Test Dashboard title"}
         };
     }
 
     @Test(description = "UI: Update Dashboard name", dataProvider = "dashboardNames")
     @ParameterizedTest
-    @ValueSource(strings = {"New Dashboard name 1", "Another Dashboard new name", "Brand New Dashboard name", "Kind of new Dashboard name", "New Test Dashboard name"})
+    @ValueSource(strings = {"New Dashboard name 1", "Another Dashboard new name", "Brand New Dashboard name", "Kind of new Dashboard name", "New Test Dashboard name or title"})
     public void testUpdateDashboardName(String newName) {
         dashboardPage.selectFirstDashboard();
         dashboardPage.updateDashboardName(newName);
