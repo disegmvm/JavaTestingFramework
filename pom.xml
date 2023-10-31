@@ -102,6 +102,13 @@
             <version>5.8.2</version> <!-- use the version that matches your existing JUnit 5 setup -->
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.jbehave/jbehave-core -->
+        <dependency>
+            <groupId>org.jbehave</groupId>
+            <artifactId>jbehave-core</artifactId>
+            <version>5.2.0</version>
+        </dependency>
+
     </dependencies>
 
     <build>
