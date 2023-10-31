@@ -12,9 +12,12 @@ public class LoginPage {
 
     private By usernameField = By.name("login");
     private By passwordField = By.name("password");
-    private By loginButton = By.xpath("//div[@class='loginForm__login-button-container--1mHGW']//button[@type='submit']");
+    private By loginButton = By.xpath("//div[@class='loginForm__login-button-container--KT9g6']//button[@type='submit']");
 
     public LoginPage(WebDriver driver) {
+        if(driver == null) {
+            throw new RuntimeException("Driver passed to LoginPage is null!");
+        }
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 5);
     }
