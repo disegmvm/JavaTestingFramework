@@ -3,6 +3,7 @@ package com.epam.rp.runners;
 import com.epam.rp.api.tests.steps.DashboardApiSteps;
 import org.jbehave.core.configuration.Configuration;
 import org.jbehave.core.configuration.MostUsefulConfiguration;
+import org.jbehave.core.embedder.Embedder;
 import org.jbehave.core.junit.JUnitStories;
 import org.jbehave.core.reporters.Format;
 import org.jbehave.core.reporters.StoryReporterBuilder;
@@ -26,6 +27,16 @@ public class JBehaveApiRunner extends JUnitStories {
                 );
     }
 
+    @Override
+    public Embedder configuredEmbedder() {
+        Embedder embedder = super.configuredEmbedder();
+        embedder.embedderControls()
+                .doGenerateViewAfterStories(true)
+                .doIgnoreFailureInStories(true)
+                .doIgnoreFailureInView(false)
+                .useThreads(2);
+        return embedder;
+    }
 
     @Override
     public InjectableStepsFactory stepsFactory() {
