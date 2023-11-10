@@ -55,6 +55,7 @@ public class DashboardPage {
     }
 
     public void updateDashboardName(String newDashboardName){
+        //TODO get rid of try-catch
         try{
             clickEditDashboardBtn();
         } catch (ElementClickInterceptedException ignored){
